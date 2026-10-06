@@ -78,3 +78,47 @@ docker compose up --build
 - Python virtual environments are intentionally not committed. Recreate them from each backend `requirements.txt`.
 - Runtime caches, local databases, and secrets are intentionally ignored.
 - Assignment 2 seeds its database automatically from `backend/GHG_Sheet.xlsx`.
+
+## Deploying With Render and Vercel
+
+This repo is ready for a split deployment:
+
+- Render hosts the FastAPI backends using `render.yaml`.
+- Vercel hosts each static frontend from its own `frontend/` folder.
+
+### 1. Push the `project/` folder to GitHub
+
+Use `project/` as the repository root before connecting it to Render or Vercel.
+
+### 2. Deploy backends on Render
+
+In Render, create a new Blueprint from the GitHub repo. Render will read `render.yaml` and create:
+
+- `exascale-assignment-1-api`
+- `exascale-assignment-2-api`
+- `exascale-assignment-2-db`
+
+After deployment, copy both backend URLs:
+
+- Assignment 1 API: `https://exascale-assignment-1-api.onrender.com`
+- Assignment 2 API: `https://exascale-assignment-2-api.onrender.com/api`
+
+### 3. Deploy frontends on Vercel
+
+Create two Vercel projects from the same GitHub repo.
+
+For Assignment 1:
+
+- Root Directory: `assignment 1/frontend`
+- Build Command: `npm run build`
+- Output Directory: `.`
+- Environment Variable: `API_BASE=https://exascale-assignment-1-api.onrender.com`
+
+For Assignment 2:
+
+- Root Directory: `assignment 2/frontend`
+- Build Command: `npm run build`
+- Output Directory: `.`
+- Environment Variable: `API_BASE=https://exascale-assignment-2-api.onrender.com/api`
+
+The frontend build writes `env.js` from `API_BASE`, so the same code works locally and on Vercel.

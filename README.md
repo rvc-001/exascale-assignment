@@ -43,3 +43,12 @@ git commit -m "Complete Exascale AI assignments"
 ```
 
 Docker was not available in the current environment, so container build verification should be run on a machine with Docker installed before final submission.
+
+## Deployment Note
+
+Deployment config is included for both layouts:
+
+- If you push this whole folder, Render can use the root `render.yaml`.
+- If you push only `project/`, Render can use `project/render.yaml`.
+
+For Vercel, deploy each frontend separately and set the root directory to either `project/assignment 1/frontend` and `project/assignment 2/frontend` from this whole-folder repo, or `assignment 1/frontend` and `assignment 2/frontend` from a `project/`-root repo.
