@@ -6,9 +6,13 @@
 - **Frontend Dashboard:** [https://exascale-assignment-frontend.vercel.app/](https://exascale-assignment-frontend.vercel.app/)
 - **Backend API:** [https://exascale-assignment.onrender.com](https://exascale-assignment.onrender.com)
 
+![Assignment 1 Dashboard Prototype](assignment%201/assets/image.png)
+
 ### Assignment 2: Carbon Emissions Reporting Platform
 - **Frontend Dashboard:** [https://exascale-assignment-frontend-gsp8.vercel.app/](https://exascale-assignment-frontend-gsp8.vercel.app/)
 - **Backend API:** [https://exascale-assignment-1.onrender.com](https://exascale-assignment-1.onrender.com)
+
+![Assignment 2 Dashboard Prototype](assignment%202/assets/image.png)
 
 ---
 

@@ -6,6 +6,8 @@
 - **Backend API Base URL:** [https://exascale-assignment-1.onrender.com](https://exascale-assignment-1.onrender.com)
   - **Interactive API Docs (Swagger):** [https://exascale-assignment-1.onrender.com/docs](https://exascale-assignment-1.onrender.com/docs)
 
+![Assignment 2 Dashboard Prototype](assets/image.png)
+
 ---
 
 This project implements a GHG Protocol-based emissions reporting platform focused on Scope 1 and Scope 2 emissions. It provides emission record creation, historical factor accuracy, manual override auditing, business metrics, advanced analytics APIs, and an ESG dashboard.

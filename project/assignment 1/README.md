@@ -6,6 +6,8 @@
 - **Backend API Base URL:** [https://exascale-assignment.onrender.com](https://exascale-assignment.onrender.com)
   - **Interactive API Docs (Swagger):** [https://exascale-assignment.onrender.com/docs](https://exascale-assignment.onrender.com/docs)
 
+![Assignment 1 Dashboard Prototype](assets/image.png)
+
 ---
 
 This project implements an end-to-end power demand forecasting prototype for Apex Power & Utilities in Dhanbad, Jharkhand. It converts the provided 10-minute feeder consumption data into 30-minute demand blocks, enriches the data with weather and localized holiday signals, trains a forecasting model, and serves the result through a web dashboard.
