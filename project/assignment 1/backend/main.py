@@ -188,6 +188,8 @@ def get_holidays():
     upcoming["date"] = upcoming["date"].dt.strftime("%Y-%m-%d")
     return {"holidays": upcoming[["date", "holiday_name", "type"]].to_dict(orient="records")}
 
-@app.get("/health")
+@app.get("/health", tags=["Health"])
+@app.head("/health", tags=["Health"])
 def health_check():
-    return {"status": "ok", "model_loaded": model is not None}
+    """Explicit health check endpoint for Uptime Robot."""
+    return {"success": True, "status": "ok", "model_loaded": model is not None, "message": "APU Demand Forecast API is healthy."}

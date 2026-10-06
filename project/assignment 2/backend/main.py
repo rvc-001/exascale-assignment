@@ -35,6 +35,8 @@ app.include_router(emissions.router)
 app.include_router(analytics.router)
 app.include_router(metrics.router)
 
-@app.get("/health")
+@app.get("/health", tags=["Health"])
+@app.head("/health", tags=["Health"])
 def health():
-    return {"status": "ok"}
+    """Explicit health check endpoint for Uptime Robot."""
+    return {"success": True, "status": "ok", "message": "GHG Emissions Reporting API is healthy."}
