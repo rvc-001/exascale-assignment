@@ -1,5 +1,13 @@
 # Assignment 1: Intelligent Power Demand Forecasting
 
+## Live Deployment
+
+- **Frontend Dashboard:** [https://exascale-assignment-frontend.vercel.app/](https://exascale-assignment-frontend.vercel.app/)
+- **Backend API Base URL:** [https://exascale-assignment.onrender.com](https://exascale-assignment.onrender.com)
+  - **Interactive API Docs (Swagger):** [https://exascale-assignment.onrender.com/docs](https://exascale-assignment.onrender.com/docs)
+
+---
+
 This project implements an end-to-end power demand forecasting prototype for Apex Power & Utilities in Dhanbad, Jharkhand. It converts the provided 10-minute feeder consumption data into 30-minute demand blocks, enriches the data with weather and localized holiday signals, trains a forecasting model, and serves the result through a web dashboard.
 
 ## What This Solves

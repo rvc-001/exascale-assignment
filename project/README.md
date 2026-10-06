@@ -1,5 +1,17 @@
 # Exascale Data Developer Intern Assignments
 
+## Live Deployments
+
+### Assignment 1: Intelligent Power Demand Forecasting
+- **Frontend Dashboard:** [https://exascale-assignment-frontend.vercel.app/](https://exascale-assignment-frontend.vercel.app/)
+- **Backend API:** [https://exascale-assignment.onrender.com](https://exascale-assignment.onrender.com)
+
+### Assignment 2: Carbon Emissions Reporting Platform
+- **Frontend Dashboard:** [https://exascale-assignment-frontend-gsp8.vercel.app/](https://exascale-assignment-frontend-gsp8.vercel.app/)
+- **Backend API:** [https://exascale-assignment-1.onrender.com](https://exascale-assignment-1.onrender.com)
+
+---
+
 This repository contains two independent, end-to-end prototypes built from the Exascale Deeptech & AI assignment brief.
 
 ## Repository Layout
@@ -100,8 +112,8 @@ In Render, create a new Blueprint from the GitHub repo. Render will read `render
 
 After deployment, copy both backend URLs:
 
-- Assignment 1 API: `https://exascale-assignment-1-api.onrender.com`
-- Assignment 2 API: `https://exascale-assignment-2-api.onrender.com/api`
+- Assignment 1 API: `https://exascale-assignment.onrender.com`
+- Assignment 2 API: `https://exascale-assignment-1.onrender.com/api`
 
 ### 3. Deploy frontends on Vercel
 
@@ -112,14 +124,14 @@ For Assignment 1:
 - Root Directory: `assignment 1/frontend`
 - Build Command: `npm run build`
 - Output Directory: `.`
-- Environment Variable: `API_BASE=https://exascale-assignment-1-api.onrender.com`
+- Environment Variable: `API_BASE=https://exascale-assignment.onrender.com`
 
 For Assignment 2:
 
 - Root Directory: `assignment 2/frontend`
 - Build Command: `npm run build`
 - Output Directory: `.`
-- Environment Variable: `API_BASE=https://exascale-assignment-2-api.onrender.com/api`
+- Environment Variable: `API_BASE=https://exascale-assignment-1.onrender.com/api`
 
 The frontend build writes `env.js` from `API_BASE`, so the same code works locally and on Vercel.
 
