@@ -122,3 +122,5 @@ For Assignment 2:
 - Environment Variable: `API_BASE=https://exascale-assignment-2-api.onrender.com/api`
 
 The frontend build writes `env.js` from `API_BASE`, so the same code works locally and on Vercel.
+
+Python is pinned to `3.11.9` with `.python-version` files so Render does not use its moving default Python version during backend builds.

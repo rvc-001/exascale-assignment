@@ -52,3 +52,5 @@ Deployment config is included for both layouts:
 - If you push only `project/`, Render can use `project/render.yaml`.
 
 For Vercel, deploy each frontend separately and set the root directory to either `project/assignment 1/frontend` and `project/assignment 2/frontend` from this whole-folder repo, or `assignment 1/frontend` and `assignment 2/frontend` from a `project/`-root repo.
+
+Render's current default Python version is newer than some pinned dependencies support, so Python is pinned to `3.11.9` with `.python-version` files in the repo and backend service roots.
