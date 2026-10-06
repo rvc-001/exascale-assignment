@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APU Demand Forecast Dashboard</title>
+  <link rel="icon" type="image/jpeg" href="favicon.jpg">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="mark" aria-hidden="true">
+          <i data-lucide="zap"></i>
+        </div>
+        <div>
+          <p class="eyebrow">Assignment 1 / Power Systems</p>
+          <h1>APU Demand Forecast</h1>
+          <p class="subtitle">Dhanbad grid load prediction in 30-minute intervals</p>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <span class="system-pill">
+          <span class="dot"></span>
+          Live forecast
+        </span>
+        <span class="location-pill">
+          <i data-lucide="map-pin"></i>
+          Jharkhand, IN
+        </span>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section id="weather-panel" class="metric-grid" aria-label="Weather summary">
+        <article class="metric-card">
+          <div class="metric-icon amber"><i data-lucide="thermometer-sun"></i></div>
+          <div>
+            <span class="metric-label">Temperature</span>
+            <strong class="metric-value" id="temp-card">-- C</strong>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-icon blue"><i data-lucide="droplets"></i></div>
+          <div>
+            <span class="metric-label">Humidity</span>
+            <strong class="metric-value" id="humidity-card">--%</strong>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-icon slate"><i data-lucide="cloud"></i></div>
+          <div>
+            <span class="metric-label">Cloud cover</span>
+            <strong class="metric-value" id="cloud-card">--%</strong>
+          </div>
+        </article>
+      </section>
+
+      <section class="workbench">
+        <article id="chart-section" class="panel chart-panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">Forecast curve</p>
+              <h2>24-hour load profile</h2>
+            </div>
+            <span class="badge">30-min blocks</span>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="forecastChart"></canvas>
+          </div>
+        </article>
+
+        <aside id="holidays-panel" class="panel schedule-panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">Calendar context</p>
+              <h2>Upcoming holidays</h2>
+            </div>
+            <i data-lucide="calendar-days" class="panel-icon"></i>
+          </div>
+          <div class="table-container">
+            <table id="holidays-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Holiday</th>
+                  <th>Type</th>
+                </tr>
+              </thead>
+              <tbody id="holidays-body">
+                <tr><td colspan="3" class="loading-text">Loading holidays...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <script src="env.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

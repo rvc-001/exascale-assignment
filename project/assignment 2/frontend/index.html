@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GHG Emissions Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Assignment 2 / GHG Protocol</p>
+        <h1>Carbon Emissions Reporting</h1>
+        <p class="subtitle">Operational dashboard for Scope 1 and Scope 2 tracking across activity sources.</p>
+      </div>
+      <section id="dashboard-controls" class="year-control" aria-label="Reporting year">
+        <label for="year-selector">Reporting year</label>
+        <select id="year-selector">
+          <option value="2026">2026</option>
+          <option value="2025">2025</option>
+          <option value="2024" selected>2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+        </select>
+      </section>
+    </header>
+
+    <main>
+      <section id="kpi-row" class="kpi-grid" aria-label="Emissions KPIs">
+        <article class="kpi-card" id="kpi-intensity">
+          <div class="kpi-icon green"><i data-lucide="gauge"></i></div>
+          <div>
+            <h3>Emission intensity</h3>
+            <p class="kpi-value" id="intensity-value">-- kgCO2e/Ton</p>
+          </div>
+        </article>
+        <article class="kpi-card" id="kpi-total">
+          <div class="kpi-icon blue"><i data-lucide="factory"></i></div>
+          <div>
+            <h3>Total emissions</h3>
+            <p class="kpi-value" id="total-value">-- kgCO2e</p>
+          </div>
+        </article>
+        <article class="kpi-card" id="kpi-change">
+          <div class="kpi-icon amber"><i data-lucide="trending-up"></i></div>
+          <div>
+            <h3>YoY change</h3>
+            <p class="kpi-value" id="change-value">--%</p>
+          </div>
+        </article>
+      </section>
+
+      <section id="charts-grid" class="charts-grid">
+        <article class="chart-card">
+          <div class="section-title">
+            <span><i data-lucide="bar-chart-3"></i></span>
+            <h2>Year-over-year emissions</h2>
+          </div>
+          <div class="chart-frame">
+            <canvas id="yoyChart"></canvas>
+          </div>
+        </article>
+        <article class="chart-card source-card">
+          <div class="section-title">
+            <span><i data-lucide="pie-chart"></i></span>
+            <h2>Emissions by source</h2>
+          </div>
+          <div class="source-layout">
+            <div class="donut-frame">
+              <canvas id="hotspotChart"></canvas>
+            </div>
+            <div id="hotspotLegend" class="source-list" aria-label="Top emissions sources"></div>
+          </div>
+        </article>
+        <article class="chart-card wide">
+          <div class="section-title">
+            <span><i data-lucide="line-chart"></i></span>
+            <h2 id="monthly-title">Monthly emissions trend (2024)</h2>
+          </div>
+          <div class="chart-frame tall">
+            <canvas id="monthlyChart"></canvas>
+          </div>
+        </article>
+      </section>
+
+      <section id="form-section" class="entry-panel">
+        <div class="section-title">
+          <span><i data-lucide="file-plus-2"></i></span>
+          <h2>Record new emission</h2>
+        </div>
+        <form id="emission-form">
+          <label>Scope
+            <select id="emission-scope">
+              <option value="1">Scope 1 (Direct)</option>
+              <option value="2">Scope 2 (Purchased Energy)</option>
+            </select>
+          </label>
+          <label>Activity date
+            <input type="date" id="activity-date" required>
+          </label>
+          <label>Activity type
+            <select id="activity-type"></select>
+          </label>
+          <label id="amount-label">Amount (Units)
+            <input type="number" id="activity-amount" step="0.01" required>
+          </label>
+          <button type="submit">
+            <i data-lucide="send"></i>
+            Submit emission
+          </button>
+        </form>
+        <div id="form-result" role="status"></div>
+      </section>
+
+      <section id="metric-section" class="entry-panel">
+        <div class="section-title">
+          <span><i data-lucide="clipboard-plus"></i></span>
+          <h2>Record business metric</h2>
+        </div>
+        <form id="metric-form">
+          <label>Metric date
+            <input type="date" id="metric-date" required>
+          </label>
+          <label>Metric
+            <select id="metric-name">
+              <option value="Tons of Steel Produced">Tons of Steel Produced</option>
+              <option value="Number of Employees">Number of Employees</option>
+            </select>
+          </label>
+          <label>Value
+            <input type="number" id="metric-value" step="0.01" required>
+          </label>
+          <button type="submit">
+            <i data-lucide="save"></i>
+            Save metric
+          </button>
+        </form>
+        <div id="metric-result" role="status"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="env.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

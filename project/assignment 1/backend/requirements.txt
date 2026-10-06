@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+pandas==2.2.2
+numpy>=2.0,<2.4
+scipy>=1.14
+scikit-learn>=1.5,<1.8
+requests
+tzdata
