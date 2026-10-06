@@ -9,10 +9,12 @@ import requests
 import logging
 from datetime import datetime, timedelta
 import math
+import os
 from functools import lru_cache
 from zoneinfo import ZoneInfo
 
 IST = ZoneInfo("Asia/Kolkata")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 app = FastAPI(title="APU Demand Forecast API", version="1.0.0")
 
@@ -23,8 +25,8 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-model = joblib.load("models/forecast_model.joblib")
-with open("models/feature_list.json") as f:
+model = joblib.load(os.path.join(BASE_DIR, "models", "forecast_model.joblib"))
+with open(os.path.join(BASE_DIR, "models", "feature_list.json")) as f:
     FEATURES = json.load(f)
 
 print(f"Model loaded. Features ({len(FEATURES)}): {FEATURES}")
@@ -39,7 +41,7 @@ def get_forecast():
     forecast_times = [now_floor + timedelta(minutes=30 * i) for i in range(48)]
     weather_hourly = fetch_weather_forecast(now_floor)
 
-    hist = pd.read_csv("data/processed/load_cleaned_30min.csv", parse_dates=True, index_col=0).sort_index()
+    hist = pd.read_csv(os.path.join(BASE_DIR, "data", "processed", "load_cleaned_30min.csv"), parse_dates=True, index_col=0).sort_index()
     hist = hist.tail(1500)
     
     csv_last = hist.index[-1]
@@ -117,7 +119,7 @@ def build_feature_row(t: datetime, weather: dict, hist: pd.DataFrame, weeks_diff
 
 @lru_cache(maxsize=1)
 def _get_holiday_set():
-    path = "data/raw/jharkhand_holidays.csv"
+    path = os.path.join(BASE_DIR, "data", "raw", "jharkhand_holidays.csv")
     hdf = pd.read_csv(path, parse_dates=['date'])
     return set(hdf['date'].dt.strftime('%Y-%m-%d'))
 
@@ -177,7 +179,7 @@ def fetch_weather_forecast(now_floor: datetime):
 
 @app.get("/holidays")
 def get_holidays():
-    holidays_df = pd.read_csv("data/raw/jharkhand_holidays.csv", parse_dates=["date"])
+    holidays_df = pd.read_csv(os.path.join(BASE_DIR, "data", "raw", "jharkhand_holidays.csv"), parse_dates=["date"])
     now_ist_date = datetime.now(IST).date()
     upcoming = holidays_df[
         (holidays_df["date"].dt.date >= now_ist_date) &
